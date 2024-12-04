@@ -26,13 +26,14 @@
             padding: 10px;
             font-size: 16px;
             cursor: pointer;
-            width: 95%; /* 按钮宽度为视频宽度的95% */
+            width: 45%; /* 每个按钮宽度为视频宽度的45% */
             background-color: #ff1e43;
             color: white;
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s;
             display: inline-block; /* 使按钮居中 */
+            margin: 0 2.5%; /* 按钮之间的间距 */
         }
         button:hover {
             background-color: #d9002a;
@@ -45,16 +46,17 @@
         Your browser does not support the video tag.
     </video>
     
-    <!-- 视频下方的跳转按钮 -->
+    <!-- 视频下方的两个跳转按钮 -->
     <div class="button-container">
-        <button onclick="window.location.href='https://example.com'">跳转到其他页面</button>
+        <button onclick="window.location.href='https://example.com/page1'">跳转到页面1</button>
+        <button onclick="window.location.href='https://example.com/page2'">跳转到页面2</button>
     </div>
 
     <script>
         // 监听视频播放结束事件，并自动跳转到指定链接
         const video = document.getElementById('videoPlayer');
         video.addEventListener('ended', function() {
-            window.location.href = 'https://example.com'; // 替换为你想要跳转的链接
+            window.location.href = 'https://example.com/endpage'; // 替换为你想要跳转的链接
         });
     </script>
 </body>
