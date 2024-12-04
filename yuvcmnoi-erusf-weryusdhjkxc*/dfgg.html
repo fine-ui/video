@@ -62,24 +62,53 @@
         }
         .modal-content {
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border: 2px solid #ff1e43; /* 边框颜色和宽度 */
-            border-radius: 15px; /* 圆角 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 阴影效果 */
+            border-radius: 10px; /* 圆角 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 阴影效果 */
             text-align: center;
-            max-width: 80%; /* 弹窗宽度为屏幕宽度的80% */
-            width: 100%;
+            max-width: 80%; /* 弹窗最大宽度 */
+            width: 90%; /* 弹窗宽度 */
+            font-size: 16px;
         }
-        .modal-content p {
+        .modal-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .modal-message {
             margin-bottom: 20px;
-            font-size: 18px;
-            color: #333;
+        }
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .modal-buttons button {
+            width: 48%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal-buttons #cancelButton {
+            background-color: #ff1e43;
+        }
+        .modal-buttons #confirmButton {
+            background-color: #ffb614;
+        }
+        .modal-buttons button:hover {
+            background-color: #d9002a;
+        }
+        .modal-buttons #confirmButton:hover {
+            background-color: #d79b00;
         }
     </style>
 </head>
 <body>
     <video id="videoPlayer" controls>
-        <source src="https://yzm.kxvk.top/video/m3u8//5f511b1c/index.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
+        <source src="https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
         Your browser does not support the video tag.
     </video>
     
@@ -92,7 +121,12 @@
     <!-- 结束模态框 -->
     <div id="endModal">
         <div class="modal-content">
-            <p>视频播放结束即将跳转到VIP群组</p >
+            <div class="modal-title">提示</div>
+            <div class="modal-message">视频播放完毕3秒后将为您跳转VIP群组</div>
+            <div class="modal-buttons">
+                <button id="cancelButton" onclick="hideEndModal()">取消</button>
+                <button id="confirmButton" onclick="redirectNow()">确定</button>
+            </div>
         </div>
     </div>
 
@@ -101,12 +135,28 @@
         const video = document.getElementById('videoPlayer');
         const endModal = document.getElementById('endModal');
 
+        let timeoutId;
+
         video.addEventListener('ended', function() {
-            endModal.style.display = 'flex';
-            setTimeout(function() {
-                window.location.href = 'https://example.com/endpage'; // 替换为你想要跳转的链接
-            }, 3000); // 3秒后自动跳转
+            showEndModal();
         });
+
+        function showEndModal() {
+            endModal.style.display = 'flex';
+            timeoutId = setTimeout(function() {
+                redirectNow();
+            }, 3000); // 3秒后自动跳转
+        }
+
+        function hideEndModal() {
+            clearTimeout(timeoutId);
+            endModal.style.display = 'none';
+        }
+
+        function redirectNow() {
+            hideEndModal();
+            window.location.href = 'https://example.com/endpage'; // 替换为你想要跳转的链接
+        }
     </script>
 </body>
 </html>
