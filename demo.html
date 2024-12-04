@@ -37,136 +37,25 @@
         button:hover {
             background-color: #d9002a;
         }
-        #passwordModal, #endModal {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* 背景颜色和透明度 */
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #ff1e43; /* 边框颜色和宽度 */
-            border-radius: 15px; /* 圆角 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 阴影效果 */
-            text-align: center;
-            max-width: 60%; /* 弹窗宽度为视频宽度的60% */
-            width: 100%;
-        }
-        .modal-content img {
-            max-width: 50%; /* 图片宽度为弹窗宽度的50% */
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .modal-content p {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-        .modal-content input {
-            padding: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .modal-content button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #ff1e43;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: inline-block; /* 使按钮居中 */
-        }
-        .modal-content button:hover {
-            background-color: #d9002a;
-        }
-        .end-modal-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* 两个按钮之间的间隙 */
-            margin-top: 20px;
-            justify-content: center; /* 使按钮居中 */
-            align-items: center; /* 使按钮居中 */
-        }
     </style>
 </head>
 <body>
     <video id="videoPlayer" controls>
-        <source src="https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
+        <source src="https://your-domestic-cdn-url/your_m3u8_file.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
         Your browser does not support the video tag.
     </video>
+    
+    <!-- 视频下方的跳转按钮 -->
     <div class="button-container">
         <button onclick="window.location.href='https://example.com'">跳转到其他页面</button>
     </div>
 
-    <!-- 密码输入模态框 -->
-    <div id="passwordModal">
-        <div class="modal-content">
-            <p>请输入密码以继续观看：</p >
-            <input type="password" id="passwordInput" placeholder="密码">
-            <img src="https://img.tc.ymkjs.cn/imgs/2024/12/4a4fd07df3b81d42.jpg" alt="提示图片"> <!-- 图片路径 -->
-            <p class="password-hint">提示：请输入正确的密码以继续观看。</p >
-            <p class="password-warning">注意：密码错误将无法继续观看。</p >
-            <button onclick="checkPassword()">确定</button>
-        </div>
-    </div>
-
-    <!-- 结束模态框 -->
-    <div id="endModal">
-        <div class="modal-content">
-            <p>视频已播放完毕</p >
-            <div class="end-modal-buttons">
-                <button onclick="window.location.href='https://example.com'">跳转到其他页面1</button>
-                <button onclick="window.location.href='https://example.com'">跳转到其他页面2</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        let isPasswordChecked = false;
-
-        // 监听视频播放事件
+        // 监听视频播放结束事件，并自动跳转到指定链接
         const video = document.getElementById('videoPlayer');
-        video.addEventListener('play', function() {
-            if (!isPasswordChecked) {
-                setTimeout(showPasswordModal, 2000); // 2秒后弹出密码输入框
-            }
+        video.addEventListener('ended', function() {
+            window.location.href = 'https://example.com'; // 替换为你想要跳转的链接
         });
-
-        // 监听视频结束事件
-        video.addEventListener('ended', showEndModal);
-
-        function showPasswordModal() {
-            document.getElementById('passwordModal').style.display = 'flex';
-            video.pause(); // 暂停视频
-        }
-
-        function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            if (password === "11") { // 替换为你的密码
-                isPasswordChecked = true;
-                document.getElementById('passwordModal').style.display = 'none';
-                video.play(); // 继续播放视频
-            } else {
-                alert("密码错误，请重新输入！");
-                document.getElementById('passwordInput').value = ''; // 清空输入框
-            }
-        }
-
-        function showEndModal() {
-            document.getElementById('endModal').style.display = 'flex';
-        }
     </script>
 </body>
 </html>
