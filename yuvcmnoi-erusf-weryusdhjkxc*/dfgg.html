@@ -70,13 +70,16 @@
             max-width: 80%; /* 弹窗最大宽度 */
             width: 90%; /* 弹窗宽度 */
             font-size: 16px;
+            color: black; /* 弹窗内的文字颜色为黑色 */
         }
         .modal-title {
             font-weight: bold;
             margin-bottom: 10px;
+            color: black; /* 标题文字颜色为黑色 */
         }
         .modal-message {
             margin-bottom: 20px;
+            color: black; /* 内容文字颜色为黑色 */
         }
         .modal-buttons {
             display: flex;
@@ -91,18 +94,22 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            color: white; /* 按钮文字颜色为白色 */
         }
         .modal-buttons #cancelButton {
-            background-color: #ff1e43;
+            background-color: #ffb614; /* 取消按钮为黄色 */
         }
         .modal-buttons #confirmButton {
-            background-color: #ffb614;
+            background-color: #ff1e43; /* 确定按钮为红色 */
         }
         .modal-buttons button:hover {
             background-color: #d9002a;
         }
+        .modal-buttons #cancelButton:hover {
+            background-color: #d79b00; /* 取消按钮悬停时的颜色变化 */
+        }
         .modal-buttons #confirmButton:hover {
-            background-color: #d79b00;
+            background-color: #d9002a; /* 确定按钮悬停时的颜色变化 */
         }
     </style>
 </head>
