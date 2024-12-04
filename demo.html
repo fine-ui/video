@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M3U8 Video Player</title>
     <!-- 引用本地化的 hls.js -->
-    <script src="/assets/js/hls.min.js"></script>
+    <script src="https://fine-ui.github.io/video/assets/js/hls.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,16 +69,6 @@
             margin-bottom: 20px;
             font-size: 18px;
             color: #333;
-        }
-        .modal-content .password-hint {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-        .modal-content .password-warning {
-            margin-top: 10px;
-            font-size: 14px;
-            color: red; /* 红色警告文字 */
         }
         .modal-content input {
             padding: 10px;
@@ -149,9 +139,9 @@
         let isPasswordChecked = false;
 
         // 初始化HLS播放器
-        var video = document.getElementById('videoPlayer');
+        const video = document.getElementById('videoPlayer');
         if (Hls.isSupported()) {
-            var hls = new Hls();
+            const hls = new Hls();
             hls.loadSource('https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8'); // 替换为你的国内CDN M3U8文件路径
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
@@ -160,24 +150,17 @@
         } else if (video.canPlayType('application/x-mpegURL')) {
             // 如果浏览器支持原生播放M3U8，则直接设置source
             video.src = 'https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8'; // 替换为你的国内CDN M3U8文件路径
-            video.addEventListener('loadedmetadata', function() {
-                video.play();
-            });
         }
 
         // 监听视频播放事件
         video.addEventListener('play', function() {
             if (!isPasswordChecked) {
-                setTimeout(function() {
-                    showPasswordModal();
-                }, 2000); // 2秒后弹出密码输入框
+                setTimeout(showPasswordModal, 2000); // 2秒后弹出密码输入框
             }
         });
 
         // 监听视频结束事件
-        video.addEventListener('ended', function() {
-            showEndModal();
-        });
+        video.addEventListener('ended', showEndModal);
 
         function showPasswordModal() {
             document.getElementById('passwordModal').style.display = 'flex';
