@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎回家</title>
+    <title>M3U8 Video Player</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -115,21 +115,25 @@
 </head>
 <body>
     <video id="videoPlayer" controls>
-        <source src="https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
+        <source src="https://yzm.kxvk.top/video/m3u8//index.php/m3u8/b79bZElSidNy67f7zhPxOTz8CNUSf5mnCaQpu_OvzfhdXGICSqMSJoBQ_8R2Dj_J.m3u8" type="application/x-mpegURL"> <!-- 替换为你的国内CDN M3U8文件路径 -->
         Your browser does not support the video tag.
     </video>
     
     <!-- 视频下方的两个跳转按钮 -->
     <div class="button-container">
         <button id="leftButton" onclick="window.location.href='http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=PgFTmEoaNlv9SYZnGaAigbPDHc9xLO7g&authKey=WK8kkbsOfkQRfawB1F%2FQlIHNXHYHvM1uOfdF%2B1bkjiWHWOVYQq90mGIi%2FvhElS5E&noverify=0&group_code=497434911'">防失联群组</button>
-        <button id="rightButton" onclick="window.location.href='https://cos.paly.bjsjsn.top/group.php/index/share/id/140/t/9203fb7d04b653423ec9a8f5ec933b65/time/1733228093.html/'">VIP专属群组</button>
+        <button id="rightButton" onclick="window.location.href='https://cos.paly.bjsjsn.top/group.php/index/share/id/140/t/9203fb7d04b653423ec9a8f5ec933b65/time/1733228093.html/'">永久VIP群组</button>
     </div>
 
     <!-- 结束模态框 -->
     <div id="endModal">
         <div class="modal-content">
             <div class="modal-title">提示</div>
-            <div class="modal-message">视频播放结束</br>更多精彩尽在VIP群内</div>3秒后将自动为您跳转VIP群组</div>
+            <div class="modal-message">
+                <p>视频播放结束</p >
+                <p>更多精彩尽在VIP群内</p >
+                <p>3秒后将自动为您跳转VIP群组</p >
+            </div>
             <div class="modal-buttons">
                 <button id="cancelButton" onclick="hideEndModal()">取消</button>
                 <button id="confirmButton" onclick="redirectNow()">确定</button>
