@@ -1,197 +1,57 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M3U8 Video Player with Password Protection</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black; /* 网页背景为黑色 */
-            color: white; /* 文字颜色为白色 */
-        }
-        video {
-            width: 100%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-        }
-        .button-container {
-            margin-top: 20px;
-            text-align: center; /* 底部按钮居中 */
-        }
-        button {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 95%; /* 按钮宽度为视频宽度的95% */
-            background-color: #ff1e43;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: inline-block; /* 使按钮居中 */
-        }
-        button:hover {
-            background-color: #d9002a;
-        }
-        #passwordModal, #endModal {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* 背景颜色和透明度 */
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #ff1e43; /* 边框颜色和宽度 */
-            border-radius: 15px; /* 圆角 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* 阴影效果 */
-            text-align: center;
-            max-width: 60%; /* 弹窗宽度为视频宽度的60% */
-            width: 100%;
-        }
-        .modal-content img {
-            max-width: 50%; /* 图片宽度为弹窗宽度的50% */
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .modal-content p {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-        .modal-content .password-hint {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-        .modal-content .password-warning {
-            margin-top: 10px;
-            font-size: 14px;
-            color: red; /* 红色警告文字 */
-        }
-        .modal-content input {
-            padding: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .modal-content button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #ff1e43;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            display: inline-block; /* 使按钮居中 */
-        }
-        .modal-content button:hover {
-            background-color: #d9002a;
-        }
-        .end-modal-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* 两个按钮之间的间隙 */
-            margin-top: 20px;
-            justify-content: center; /* 使按钮居中 */
-            align-items: center; /* 使按钮居中 */
-        }
-    </style>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+  <meta name="referrer" content="no-referrer"/>
+  <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+  <title></title>
+<script type="text/javascript">var system ={};  var p = navigator.platform;system.win = p.indexOf("Win") == 0;system.mac = p.indexOf("Mac") == 0;system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);if(system.win||system.mac||system.xll){window.location.href="";}</script>
+
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.3/skins/default/aliplayer-min.css" />
+<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js"></script>
+<script>
+</script>
+  <script type="text/javascript" charset="utf-8" src="https://player.alicdn.com/aliplayer/presentation/js/aliplayercomponents.min.js"></script>
+ <style type="text/css">
+    body,html{width:100%;height:100%;background:#000;padding:0;margin:0;overflow-x:hidden;overflow-y:hidden}
+    *{margin:0;border:0;padding:0;text-decoration:none}
+</style>
 </head>
 <body>
-    <video id="videoPlayer" controls>
-        <source src="https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8" type="application/x-mpegURL"> <!-- 替换为你的M3U8文件路径 -->
-        Your browser does not support the video tag.
-    </video>
-    <div class="button-container">
-        <button onclick="window.location.href='https://example.com'">跳转到其他页面</button>
-    </div>
+<div id="playerCnt" class="prism-player"></div>
+<script type="text/javascript">document.title = "转发三个群永久观看";
+var player=new Aliplayer({id:"playerCnt","source":"https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8",
+width:"100%",height:"650px",autoplay:true,preload:true,rePlay:false,playsinline:false,useH5Prism:false,isLive:false,
+components:[{name:'MemoryPlayComponent',type:AliPlayerComponent.MemoryPlayComponent,args:[true]}],},
+function(player){console.log("The player is created")});try{}catch(e){}
+var elevideo = document.querySelector("#playerCnt > video");
+  //  elevideo.addEventListener('loadedmetadata', function () {视频的总长度 elevideo.duration});
+    
+    	// elevideo.addEventListener('play', function () {console.log("开始播放");});
+   	 //elevideo.addEventListener('playing', function () { console.log("播放中");});
+      //elevideo.addEventListener('pause', function () { console.log("暂停");}); 
+      elevideo.addEventListener('ended', function () {
+        window.location.href='http://cos.an.ymkjs.cn/safe/index?id=140';   
+    });
+</script>
+<div style="display:none"></div>
 
-    <!-- 密码输入模态框 -->
-    <div id="passwordModal">
-        <div class="modal-content">
-            <p>请输入密码以继续观看：</p >
-            <input type="password" id="passwordInput" placeholder="密码">
-            <img src="https://img.tc.ymkjs.cn/imgs/2024/11/f76fc22c867d2e85.png" alt="提示图片"> <!-- 图片路径 -->
-            <p class="password-hint">提示：请输入正确的密码以继续观看。</p >
-            <p class="password-warning">注意：密码错误将无法继续观看。</p >
-            <button onclick="checkPassword()">确定</button>
-        </div>
-    </div>
-
-    <!-- 结束模态框 -->
-    <div id="endModal">
-        <div class="modal-content">
-            <p>视频已播放完毕</p >
-            <div class="end-modal-buttons">
-                <button onclick="window.location.href='https://example.com'">跳转到其他页面1</button>
-                <button onclick="window.location.href='https://example.com'">跳转到其他页面2</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let isPasswordChecked = false;
-
-        // 初始化HLS播放器
-        var video = document.getElementById('videoPlayer');
-        if (Hls.isSupported()) {
-            var hls = new Hls();
-            hls.loadSource('https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8'); // 替换为你的M3U8文件路径
-            hls.attachMedia(video);
-        } else if (video.canPlayType('application/x-mpegURL')) {
-            // 如果浏览器支持原生播放M3U8，则直接设置source
-            video.src = 'https://yzm.kxvk.top/video/m3u8//a71ebe57/index.m3u8'; // 替换为你的M3U8文件路径
-        }
-
-        // 监听视频播放事件
-        video.addEventListener('play', function() {
-            if (!isPasswordChecked) {
-                setTimeout(function() {
-                    showPasswordModal();
-                }, 2000); // 2秒后弹出密码输入框
-            }
-        });
-
-        // 监听视频结束事件
-        video.addEventListener('ended', function() {
-            showEndModal();
-        });
-
-        function showPasswordModal() {
-            document.getElementById('passwordModal').style.display = 'flex';
-            video.pause(); // 暂停视频
-        }
-
-        function checkPassword() {
-            const password = document.getElementById('passwordInput').value;
-            if (password === "11") { // 替换为你的密码
-                isPasswordChecked = true;
-                document.getElementById('passwordModal').style.display = 'none';
-                video.play(); // 继续播放视频
-            } else {
-                alert("密码错误，请重新输入！");
-                document.getElementById('passwordInput').value = ''; // 清空输入框
-            }
-        }
-
-        function showEndModal() {
-            document.getElementById('endModal').style.display = 'flex';
-        }
-    </script>
+<script>
+function jump(){window.location.href="http://cos.an.ymkjs.cn/safe/index?id=140";} 
+ </script>
+<center><input type="button" value ="点我进永久VIP群组" onclick=javascrtpt:jump() style="
+                              width: 90%;/*设置按钮宽度*/
+                        height: 50px;/*设置按钮高度*/
+                        color:white;/*字体颜色*/
+                        background-color:red;/*按钮背景颜色*/
+                        border-radius: 5px;/*让按钮变得圆滑一点*/
+                        border- 0;/*消去按钮丑的边框*/
+                        margin: 0;
+                        outline: none;/*取消轮廓*/
+                        font-family: KaiTi;/*字体设置为楷体*/
+                        font-size: 17px;/*设置字体大小*/
+                        text-align: center;/*字体居中*/
+                        cursor: pointer;/*设置鼠标箭头手势*/"/>
+</center>
 </body>
 </html>
