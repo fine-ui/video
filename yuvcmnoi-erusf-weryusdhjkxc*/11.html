@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta name="format-detection" content="telephone=no">
+<meta content="false" name="twcClient" id="twcClient">
+<meta name="aplus-touch" content="1">
+<style>
+    body,
+    html {
+        width: 100%;
+        height: 100%
+    }
+
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    body {
+        background-color: #fff
+    }
+
+    
+
+    .page {
+        width: 750px;
+        margin: 0 auto;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .top-view {
+        width: 100%;       
+        color: #fff;
+        font-size: 14px;
+        position: relative;    
+    }
+    .top-view .top-view-img{
+        width: 100%;    
+    }
+    .top-view .top-view-body{
+        position: absolute;
+        left: 5%;
+        top: 10%;
+    }
+    .top-view .top-view-body .icon-safari {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        margin: 0 .5em;
+    }
+
+    .mian-view{
+        width: 95%;
+        /* height: 400px; */
+        /* background-color: #f424ea; */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+    .mian-view-title{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        color: #183DD9;
+        /* font-weight: 600; */
+    }
+    .mian-view-tip{
+        font-size: 14px;
+        color: #666666;
+        width: 49.5%;
+        font-weight: 400;
+        letter-spacing: 0px;
+       
+        line-height: 20px;
+        /* text-indent:28px */
+    }
+    .mian-view-download {      
+        width: 49.5%;      
+    }
+    .mian-view-download img{
+        width: 100%;
+    }
+    .floor{
+        width: 95%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        /* align-items: center; */
+        justify-content: space-between;
+        padding-bottom: 20px;
+    }
+    .floor-item{
+        width: 32%;
+        border-radius: 8px;
+        background: rgba(239, 244, 255, 1);
+        border: 1px solid rgba(151, 151, 151, 1);
+        height: 100%;
+        position: relative;
+    }
+    .floor-item .floor-item-title{
+        position: absolute;
+        top: -12px;
+
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 8px;
+        background: rgba(239, 244, 255, 1);
+        width: 80%;
+        overflow: hidden;
+       
+
+    }
+    .floor-item .floor-item-title .floor-item-title-bg{
+        width: 100%;
+        height: 25px;
+        line-height:25px;
+        padding: 0 5px;
+        background: linear-gradient(263.23deg, rgba(187, 207, 246, 0.5) 0%, rgba(103, 142, 254, 0.5) 100%);      
+        font-size:80%;
+        color: #183DD9;
+        text-align: center;
+        font-size: 12px;
+    }
+    .scale-8{
+        display: inline-block;
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        margin-left: -10px;
+    }
+    .scale-7{
+        display: inline-block;
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);
+
+    }
+    .floor-item-body{
+        padding: 10px 5px;
+        margin-top: 10px;
+        letter-spacing: 0px;
+        line-height: 20px;
+        color: rgba(102, 102, 102, 1);
+        text-align: left;
+        font-size: 12px;
+        text-indent:24px
+    }
+    /* .time{
+        width: 150px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background-color:rgba(0, 0, 0,0.4);
+        color: #fff;
+        border-radius: 50px;
+        font-size: 12px;
+        margin-top: 10px;
+        display:none;
+    } */
+    @media (max-width: 700px) {
+        .page {
+            width: 100%;
+        }
+        .floor{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .floor-item{
+            width: 90%;
+            margin-bottom: 20px;
+        }
+        .dialog .dialog-body{
+            width: 80%;
+           
+        }
+    }
+    .dialog{
+        display : none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color:rgba(8, 8, 8, 0.2);
+        
+    }
+    .dialog .dialog-body{
+       width: 350px;
+       border-radius: 3px;
+       background-color: #fff;
+       box-shadow: -10px 5px 12px  rgba(0, 0, 0, 0.1);
+    }
+    .dialog .dialog-body .title{
+       padding: 15px 20px;
+       border-bottom: 1px solid rgb(218, 218, 218);     
+       position: relative;
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       font-size: 14px;
+    }
+    .dialog .dialog-body .title .close{
+       width: 20px;
+       height: 20px;
+    }
+    .dialog .dialog-body .mian{
+       width: 100%;      
+       height: 100px;
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       justify-content: center;
+       font-size: 14px;
+       color: #000;
+    }
+    .dialog .dialog-body .mian .jg{
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+    .dialog .dialog-body .btns{
+        padding: 10px;
+        text-align: right;
+    }
+    .dialog .dialog-body .btns .btn-item{
+        padding: 5px 0px;
+        width: 80px;
+        text-align: text;
+        background-color: #fff;
+        border: 1px solid rgba(151, 151, 151, 1);
+        border-radius: 3px;
+        margin-left: 10px;   
+    }
+</style>
+
+<body>
+    <div class="page">
+        <div class="top-view">
+            <img class="top-view-img" src="image/234.png">
+            <div class="top-view-body">
+                <p style="margin-bottom: 2px;">点击右上角<img src="image/qKcdEt.png" class="icon-safari">在 浏览器 打开</p>
+                <p style="margin-bottom: 2px;">苹果设备<img src="image/0.png"
+                        class="icon-safari">安卓设备<img
+                        src="image/1.png"
+                        class="icon-safari">↗↗↗</p>
+                        
+            </div>
+            
+        </div>
+        <div class="mian-view">
+            <div class="mian-view-title">网站说明</div>
+            <div class="mian-view-tip">
+                <p>本页面是永久防失联页面</p>
+                <p>请将本页面添加到浏览器书签，方便下次访问。</p>
+				<p>微信/QQ软件内打开的用户，请点击右上角三个点跳转到任意浏览器即可打开网站。</p>
+            </div>
+            <div class="mian-view-download">
+                <img src="image/2.png">
+            </div>
+        </div>
+        <div class="floor">
+             <div class="floor-item">             
+                <div class="floor-item-title">
+                    <div class="floor-item-title-bg">
+                        <span style="width: 100%;" >1.浏览器保存书签教程</span>                      
+                    </div>                    
+                </div>
+                <div class="floor-item-body">
+                    <p>安卓QQ浏览器：打开网页→点击底部中间“三”状态栏→收藏网址→返回浏览器主页→我的→书签收藏→完成</p>
+                    <p>苹果手机浏览器：打开网页→点击底部中间状态栏→添加到主屏幕→网址信息保持默认→右上角添加→返回手机桌面→完成</p>
+                    <p>电脑QQ浏览器：打开网页→鼠标右键网页内容→添加书签→完成</p>
+                    <p>本网页是永久防失联的，请按照以上步骤将本页面收藏到你的浏览器书签内，可以长期稳定进入。</p>
+                </div>
+             </div>
+             <div class="floor-item">             
+                <div class="floor-item-title">
+                    <div class="floor-item-title-bg">
+                        <span style="width: 100%;" >2.网站打不开解决办法</span>                      
+                    </div>                    
+                </div>
+                <div class="floor-item-body">
+                    <p>本平台长期稳定运行，不存在无法打开的情况，如果你是遇到网站/APP进不去的情况，出现此问题的常见情况，基本是你所在的地区性网络干扰导致无法正常进入，并不是代表所有人都进不去你网站，所以，请不必担心，建议采取以下几种方法进入。</p>
+                    <p>方法一：开关手机的飞行模式或者尝试重启手机；</p>
+                    <p>方法二：切换手机数据流量网络或者尝试开启WIFI网络；</p>
+                    <p>方法三：部分地区由于网络原因导致，如果以上两个方法均无法正常打开网址，可以尝试前往百度搜索使用【精灵ip】或者【爱加速】等网络加速器，下载后切换IP基本就可以正常进入网站/APP了。</p>
+                </div>
+             </div>
+             <div class="floor-item">             
+                <div class="floor-item-title">
+                    <div class="floor-item-title-bg">
+                        <span style="width: 100%;" >3.网站页面提示域名升级</span>                      
+                    </div>                    
+                </div>
+                <div class="floor-item-body">
+                    <p>如果你是本站站长/合伙人，打开网站显示网址有误或网址已升级，你可以扫你自己的推广海报重新进入，或找个其他能打开的站长海报图，进入后登录你自己的账号，在会员中心-推广海报内重新生成你自己的海报图即可正常进入。</p>
+					<p>如果你是本站用户，打开网站显示网址有误或网址已升级，请与你上级站长/合伙人取得联系，获取最新网址信息或推广海报。</p>
+					<p>如果你打开APP时显示APP过期或异常提醒，请与你上级站长/合伙人取得联系，让上级站长生成最新的APP，重新下载即可正常使用。</p>
+                </div>
+             </div>
+        </div>       
+    </div>
+    
+    <!-- 弹框 -->
+    <div class="dialog" id="dialog">
+        <div class="dialog-body">
+            <div class="title">
+                <div>温馨提示</div>
+                <img class="close" onclick="cancel()" src="image/close.png"/>
+            </div>
+            <div class="mian">
+                <img class="jg"  src="image/jg.png"/>
+                <span class="time" id="time">5 秒后开始执行跳转网站,请尽快保存收藏！</span>
+            </div>
+            <div class="btns">
+                
+                <button class="btn-item" style="background-color: #18a2d9; color: #fff;" onclick="start()">前往</button>
+                <button class="btn-item" onclick="cancel()">关闭</button>
+            </div>
+            
+        </div>        
+    </div>
+
+</body>
+
+<script>
+    var url = document.location.toString();
+    var search = window.location.search;
+    var timer = null;
+    var num = 5;
+    var ua = navigator.userAgent.toLowerCase();
+    var isWeixin = ua.match(/MicroMessenger\/[0-9]/i) || ua.match(/QQ\/[0-9]/i);
+    let dialog = document.querySelector("#dialog");
+    //var isAndroid = ua.indexOf("android") != -1;
+    //var isIos = (ua.indexOf("iphone") != -1) || (ua.indexOf("ipad") != -1);// 判断是不是在wx客户端打开
+    if (isWeixin) {
+        // 判断是在Android的wx客户端还是Ios的wx客户端
+        if (isAndroid) {
+
+        } else if (isIos) {
+
+        } else {
+
+        }
+    } else {
+        var time = document.getElementById('time');
+        
+        dialog.style.display= 'flex';
+        var domains = [
+            'https://www.ymkjs.com/',
+            'https://www.ymkjs.com/',
+        ];
+
+        var index = Math.floor((Math.random() * domains.length));
+        var domain = domains[index];
+        if (search) {
+            domain = domain + search;
+        }
+
+        // setTimeout(function (){              
+        //   // location.href= domain;
+        // }, 5000);
+        var timer = setInterval(function(){ 
+            console.log(num)          
+            if(num > 0){
+                num--;
+                time.innerHTML = num + ' 秒后开始执行跳转网站,请尽快保存收藏！'
+            }else{
+                start()
+            }
+        },1000)
+    }
+    function clear(){
+        clearInterval(timer);
+    }
+
+    function cancel(){
+        console.log('取消')
+        num = 5;
+        dialog.style.display= 'none';
+    }
+
+    function start(){
+        clear()              
+        location.href= domain;
+    }
+   
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        //返回参数值
+        if (r != null) {
+            return decodeURI(r[2]);
+
+        }
+
+        return null;
+
+    }
+</script>
+
+</html>
